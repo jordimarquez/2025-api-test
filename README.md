@@ -1,5 +1,65 @@
 # Express Node Server + MySQL Setup Guide
 
+## Prerequisite: Homebrew, nvm & Node.js (macOS)
+
+If you're on macOS and don't have Homebrew or nvm installed, follow these steps first.
+
+Install Homebrew (if needed):
+
+```bash
+# Install Homebrew (official installer)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Follow the installer output: you may need to add Homebrew to your PATH.
+# On Apple Silicon (M1/M2) you typically add:
+#   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+#   eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+Install `nvm` (Node Version Manager) and the latest Node LTS:
+
+```bash
+# Install nvm (replace v0.39.6 with a newer release if available)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.6/install.sh | bash
+
+# Load nvm into current shell session (or restart your terminal)
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \ . "$NVM_DIR/nvm.sh"
+
+# Install the latest LTS Node and make it the default
+nvm install --lts
+nvm alias default 'lts/*'
+
+# Verify
+node -v
+npm -v
+```
+
+After Homebrew and Node are installed, continue with the MySQL installation below.
+
+## Prerequisite: Install MySQL (macOS / Homebrew)
+
+If you're on macOS and use Homebrew, install and start MySQL before proceeding:
+
+```bash
+# Update Homebrew
+brew update
+
+# Install MySQL
+brew install mysql
+
+# Start MySQL as a background service
+brew services start mysql
+
+# Verify status
+brew services list
+
+# (Optional) Secure MySQL and set the root password
+mysql_secure_installation
+```
+
+After installation ensure MySQL is running and update your `.env` values (`DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`) accordingly.
+
 ## Step 1: Initialize Project
 
 ```bash
