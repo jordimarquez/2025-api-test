@@ -81,7 +81,7 @@ Add to `package.json`:
 ## Step 3: Install Dependencies
 
 ```bash
-npm install express mysql2 bcrypt jsonwebtoken dotenv cors helmet express-rate-limit zod
+npm install express mysql2 bcrypt jsonwebtoken dotenv cors helmet express-rate-limit
 npm install --save-dev nodemon
 ```
 
@@ -97,7 +97,6 @@ npm install --save-dev nodemon
 - **cors**: Middleware to enable Cross-Origin Resource Sharing (CORS)
 - **helmet**: Secures Express apps by setting various HTTP headers
 - **express-rate-limit**: Middleware to limit repeated requests to APIs and/or endpoints
-- **zod**: TypeScript-first schema validation library with static type inference
 
 **Development Dependencies:**
 
